@@ -1,6 +1,3 @@
-from gevent import monkey
-monkey.patch_all()
-
 from flask import Flask, render_template, session, request
 from flask.ext.socketio import SocketIO, emit, disconnect
 
@@ -21,13 +18,13 @@ def index():
 # When the client emits 'connection', this listens and executes
 @socketio.on('connection', namespace='/chat')
 def user_connected():
-	print 'User connected'
+	print('User connected')
 
 
 # When the client emits 'new message', this listens and executes
 @socketio.on('new message', namespace='/chat')
 def new_message(data):
-	emit('new message', 
+	emit('new message',
 		{ 'username' : session['username'],
 	 	'message': data }, broadcast=True )
 
@@ -68,7 +65,7 @@ def disconnect():
 	global usernames
 	global number_of_users
 
-	
+
 	try:
 		del usernames[session['username']]
 		number_of_users -= 1

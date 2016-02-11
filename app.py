@@ -32,6 +32,7 @@ def new_message(data):
 # When client emits 'add user' this listens and executes
 @socketio.on('add user', namespace='/chat')
 def add_user(data):
+	print 'Adding User'
 	global usernames
 	global number_of_users
 
@@ -77,4 +78,4 @@ def disconnect():
 
 
 if __name__ == '__main__':
-    socketio.run(app, host='0.0.0.0')
+    socketio.run(app)

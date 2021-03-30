@@ -32,7 +32,7 @@ def new_message(data):
 # When client emits 'add user' this listens and executes
 @socketio.on('add user', namespace='/chat')
 def add_user(data):
-	print 'Adding User'
+	print('Adding User')
 	global usernames
 	global number_of_users
 
